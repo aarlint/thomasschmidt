@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas Schmidt: Mayor of Teltow (2001-2025)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a365d;
+            --secondary: #c53030;
+            --accent: #d69e2e;
+            --bg-light: #f7fafc;
+            --bg-dark: #1a202c;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --card-bg: #ffffff;
+            --timeline-line: #cbd5e0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 50%, #1a365d 100%);
+            color: white;
+            padding: 80px 20px 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            opacity: 0.9;
+            margin-bottom: 24px;
+            font-weight: 300;
+        }
+
+        .hero .years {
+            display: inline-block;
+            background: var(--secondary);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Quick Facts */
+        .quick-facts {
+            background: white;
+            max-width: 900px;
+            margin: -60px auto 40px;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .quick-facts h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .fact-item {
+            padding: 12px 16px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .fact-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+
+        .fact-value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Timeline Container */
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px 100px;
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-container::before {
+                left: 20px;
+            }
+        }
+
+        /* Timeline Entry */
+        .timeline-entry {
+            position: relative;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .timeline-entry.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-entry:nth-child(odd) {
+            padding-right: calc(50% + 40px);
+            text-align: right;
+        }
+
+        .timeline-entry:nth-child(even) {
+            padding-left: calc(50% + 40px);
+            text-align: left;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-entry:nth-child(odd),
+            .timeline-entry:nth-child(even) {
+                padding-left: 50px;
+                padding-right: 0;
+                text-align: left;
+            }
+        }
+
+        /* Timeline Dot */
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--card-bg);
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            z-index: 5;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-entry:hover .timeline-dot {
+            transform: translateX(-50%) scale(1.3);
+            background: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        .timeline-entry.category-election .timeline-dot { border-color: var(--secondary); }
+        .timeline-entry.category-infrastructure .timeline-dot { border-color: #38a169; }
+        .timeline-entry.category-international .timeline-dot { border-color: #805ad5; }
+        .timeline-entry.category-education .timeline-dot { border-color: #3182ce; }
+        .timeline-entry.category-personal .timeline-dot { border-color: #dd6b20; }
+        .timeline-entry.category-achievement .timeline-dot { border-color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+
+        /* Timeline Card */
+        .timeline-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        .timeline-entry.category-election .timeline-card::before { background: var(--secondary); }
+        .timeline-entry.category-infrastructure .timeline-card::before { background: #38a169; }
+        .timeline-entry.category-international .timeline-card::before { background: #805ad5; }
+        .timeline-entry.category-education .timeline-card::before { background: #3182ce; }
+        .timeline-entry.category-personal .timeline-card::before { background: #dd6b20; }
+        .timeline-entry.category-achievement .timeline-card::before { background: var(--accent); }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .timeline-year {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .timeline-entry.category-election .timeline-year { background: var(--secondary); }
+        .timeline-entry.category-infrastructure .timeline-year { background: #38a169; }
+        .timeline-entry.category-international .timeline-year { background: #805ad5; }
+        .timeline-entry.category-education .timeline-year { background: #3182ce; }
+        .timeline-entry.category-personal .timeline-year { background: #dd6b20; }
+        .timeline-entry.category-achievement .timeline-year { background: var(--accent); }
+
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .timeline-content {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .timeline-content ul {
+            margin: 12px 0;
+            padding-left: 20px;
+        }
+
+        .timeline-content li {
+            margin-bottom: 6px;
+        }
+
+        .timeline-quote {
+            background: var(--bg-light);
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-style: italic;
+            color: var(--text-light);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .timeline-quote cite {
+            display: block;
+            margin-top: 8px;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.85rem;
+        }
+
+        .timeline-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .timeline-link:hover {
+            color: var(--secondary);
+        }
+
+        .timeline-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Category Legend */
+        .legend {
+            max-width: 900px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.election { background: var(--secondary); }
+        .legend-dot.infrastructure { background: #38a169; }
+        .legend-dot.international { background: #805ad5; }
+        .legend-dot.education { background: #3182ce; }
+        .legend-dot.personal { background: #dd6b20; }
+        .legend-dot.achievement { background: var(--accent); }
+        .legend-dot.politics { background: var(--primary); }
+
+        /* Loading Indicator */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+            display: none;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--bg-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Legacy Section */
+        .legacy-section {
+            background: var(--primary);
+            color: white;
+            padding: 80px 20px;
+            margin-top: 60px;
+        }
+
+        .legacy-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .legacy-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .legacy-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .legacy-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legacy-card ul {
+            list-style: none;
+        }
+
+        .legacy-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.95rem;
+        }
+
+        .legacy-card li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            z-index: 1000;
+            transition: width 0.1s;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Thomas Schmidt</h1>
+            <p class="subtitle">Bürgermeister of Teltow, Brandenburg</p>
+            <span class="years">2001 — 2025</span>
+            <p style="max-width: 600px; margin: 0 auto; opacity: 0.9;">
+                24 years of leadership transforming a small post-reunification town into Germany's fastest-growing medium-sized city.
+            </p>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Years in Office</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Terms Served</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">29K</div>
+                    <div class="stat-label">Population (2025)</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Partner Cities</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="quick-facts">
+        <h2>Quick Facts</h2>
+        <div class="facts-grid">
+            <div class="fact-item">
+                <div class="fact-label">Full Name</div>
+                <div class="fact-value">Thomas Schmidt</div>
+            </div>
+            <div class="fact-item">
+                <div class="fact-label">Born</div>
+                <div class="fact-value">February 1961, Potsdam</div>
+            </div>
+            <div class="fact-item">
+                <div class="fact-label">Party</div>
+                <div class="fact-value">SPD (Social Democratic Party)</div>
+            </div>
+            <div class="fact-item">
+                <div class="fact-label">Profession</div>
+                <div class="fact-value">Trained Cook / Politician</div>
+            </div>
+            <div class="fact-item">
+                <div class="fact-label">Terms</div>
+                <div class="fact-value">3 Terms (2002-2025)</div>
+            </div>
+            <div class="fact-item">
+                <div class="fact-label">Achievement</div>
+                <div class="fact-value">Fastest-Growing German City</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="legend">
+        <div class="legend-item"><span class="legend-dot personal"></span> Personal</div>
+        <div class="legend-item"><span class="legend-dot politics"></span> Politics</div>
+        <div class="legend-item"><span class="legend-dot election"></span> Elections</div>
+        <div class="legend-item"><span class="legend-dot infrastructure"></span> Infrastructure</div>
+        <div class="legend-item"><span class="legend-dot international"></span> International</div>
+        <div class="legend-item"><span class="legend-dot education"></span> Education</div>
+        <div class="legend-item"><span class="legend-dot achievement"></span> Achievement</div>
+    </div>
+
+    <main class="timeline-container" id="timeline">
+        <!-- Timeline entries will be loaded here -->
+    </main>
+
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <p>Loading more events...</p>
+    </div>
+
+    <section class="legacy-section">
+        <div class="legacy-content">
+            <h2>Legacy & Achievements</h2>
+            <div class="legacy-grid">
+                <div class="legacy-card">
+                    <h3>🚆 Infrastructure</h3>
+                    <ul>
+                        <li>S-Bahn connection to Berlin (2005)</li>
+                        <li>Marina Teltow harbor (€15M project)</li>
+                        <li>TKS regional transit integration</li>
+                        <li>S-Bahn extension planned for 2032</li>
+                    </ul>
+                </div>
+                <div class="legacy-card">
+                    <h3>📈 Population Growth</h3>
+                    <ul>
+                        <li>16,000 → 29,000 residents</li>
+                        <li>81% growth over 24 years</li>
+                        <li>Named Germany's fastest-growing city (2015)</li>
+                        <li>1,300+ new housing units planned</li>
+                    </ul>
+                </div>
+                <div class="legacy-card">
+                    <h3>🌍 International Relations</h3>
+                    <ul>
+                        <li>🇩🇪 Ahlen, Germany (1991)</li>
+                        <li>🇫🇷 Gonfreville l'Orcher, France (1999)</li>
+                        <li>🇵🇱 Żagań, Poland (2006)</li>
+                        <li>🇨🇳 Rudong, China (2018)</li>
+                        <li>🇺🇦 Khotyn, Ukraine (2023)</li>
+                    </ul>
+                </div>
+                <div class="legacy-card">
+                    <h3>💼 Economic Development</h3>
+                    <ul>
+                        <li>Techno Terrain: 210+ companies</li>
+                        <li>6,200+ employees in tech park</li>
+                        <li>SEE:LAB innovation center (2022)</li>
+                        <li>€12M+ annual municipal revenue</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Timeline of Thomas Schmidt's Mayoral Career (2001-2025)</p>
+        <p style="margin-top: 8px;">
+            <a href="https://www.teltow.de" target="_blank">Stadt Teltow Official Website</a> ·
+            <a href="https://de.wikipedia.org/wiki/Thomas_Schmidt_(Politiker,_Februar_1961)" target="_blank">Wikipedia</a>
+        </p>
+        <p style="margin-top: 16px; font-size: 0.8rem;">Document compiled January 2026</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <script>
+        // Timeline data
+        const timelineData = [
+            {
+                year: "1961",
+                title: "Birth in Potsdam",
+                category: "personal",
+                content: `<p>Thomas Schmidt was born in February 1961 in Potsdam, East Germany (DDR). He would later train as a professional cook after completing his school education.</p>
+                <p>Growing up in the DDR would shape his early life experiences and political consciousness.</p>`
+            },
+            {
+                year: "1985-1986",
+                title: "Conscientious Objector — Bausoldat",
+                category: "personal",
+                content: `<p>Schmidt served in the East German National People's Army (NVA) as a <strong>"Bausoldat"</strong> (construction soldier), <strong>refusing to carry weapons</strong> — a significant act of conscience in the DDR.</p>
+                <p>Bausoldaten were construction workers who served as an alternative to armed military service. This early decision demonstrated Schmidt's commitment to his principles, foreshadowing his future political career built on social democratic values.</p>`
+            },
+            {
+                year: "1990",
+                title: "Joins Teltow City Council",
+                category: "politics",
+                content: `<p>Following German reunification (Die Wende), Schmidt became a member of the Teltow <strong>Stadtverordnetenversammlung</strong> (City Council).</p>
+                <p>Population of Teltow at this time: approximately <strong>16,000</strong> residents.</p>`,
+                link: { url: "https://www.teltow.de", text: "Teltow Official Website" }
+            },
+            {
+                year: "1991",
+                title: "First International Partnership — Ahlen",
+                category: "international",
+                content: `<p>Teltow establishes its first post-reunification twin city partnership with <strong>Ahlen, Germany</strong> (Westphalia).</p>
+                <p>This partnership continues to this day and laid the foundation for the "Teltow ohne Grenzen" (Teltow Without Borders) association.</p>`,
+                link: { url: "https://www.teltow.de/teltow/die-stadt/staedtepartnerschaften.html", text: "City Partnerships" }
+            },
+            {
+                year: "1994-2002",
+                title: "County Council Years",
+                category: "politics",
+                content: `<p>Elected to the <strong>Kreistag</strong> (County Council) of Landkreis Potsdam-Mittelmark.</p>
+                <p>Served as <strong>Chairman of the Youth Welfare Committee</strong> (Jugendhilfeausschuss), building expertise in social policy and administration that would prove invaluable in his mayoral career.</p>`
+            },
+            {
+                year: "1999",
+                title: "French Partnership — Gonfreville l'Orcher",
+                category: "international",
+                content: `<p>Official partnership treaty signed with <strong>Gonfreville l'Orcher</strong>, Normandy, France.</p>
+                <p>Contact between the cities had existed since 1964, making this formalization a celebration of decades of Franco-German friendship at the local level.</p>`
+            },
+            {
+                year: "November 2001",
+                title: "First Election Victory",
+                category: "election",
+                content: `<p><strong>Date:</strong> November 11, 2001</p>
+                <p>Won a <strong>narrow runoff election</strong> against independent candidate Petra Nicksch-Kasdorf.</p>
+                <ul>
+                    <li><strong>Result:</strong> 51% to 49%</li>
+                    <li>Succeeded Siegfried Kluge, the first mayor after reunification</li>
+                    <li>Campaign slogan: "SCHMIDT - Einander für Teltow" (Schmidt - Together for Teltow)</li>
+                </ul>`,
+                link: { url: "https://nat.museum-digital.de/object/1349108", text: "Election Archive" }
+            },
+            {
+                year: "2002",
+                title: "Begins First Term as Mayor",
+                category: "politics",
+                content: `<p>Officially began first 8-year term as Bürgermeister.</p>
+                <p>Founded <strong>"Teltow ohne Grenzen e.V."</strong> (Teltow Without Borders Association) to foster international relations and strengthen existing partnerships.</p>
+                <p>Population at start of term: ~18,000</p>`
+            },
+            {
+                year: "February 2005",
+                title: "S-Bahn Arrives — Historic Milestone",
+                category: "infrastructure",
+                content: `<p><strong>Date:</strong> February 24, 2005</p>
+                <p><strong>Historic milestone:</strong> Teltow reconnected to Berlin's S-Bahn network after <strong>43 years, 6 months, and 11 days</strong>.</p>
+                <ul>
+                    <li>New S26 line from Teltow Stadt to Berlin (Potsdamer Platz in 25 minutes)</li>
+                    <li>Over <strong>20,000 visitors</strong> attended the three-day opening celebration</li>
+                    <li>Schmidt actively campaigned for this infrastructure investment</li>
+                </ul>
+                <p><strong>Result:</strong> Daily passengers grew from 3,200 (2008) to 7,000+ (2012). Population growth accelerated dramatically.</p>`,
+                quote: { text: "Die S26 stärkt den Wohn- und Wirtschaftsstandort erheblich. Wir rechnen mit weiteren Gewerbeansiedlungen und einer Zunahme der Bevölkerung.", translation: "The S26 significantly strengthens the residential and economic location. We expect further business settlements and population growth." },
+                link: { url: "https://sbahn.berlin/das-unternehmen/presse/pressemitteilungen-pressearchiv/pressemitteilungen/neue-s-bahn-verbindung-zwischen-berlin-und-teltow-eroeffnet/", text: "S-Bahn Berlin Press Release" }
+            },
+            {
+                year: "2006",
+                title: "Polish Partnership — Żagań",
+                category: "international",
+                content: `<p>Twin city partnership established with <strong>Żagań, Poland</strong>.</p>
+                <p>This partnership would later become crucial in the trilateral Ukraine support effort, demonstrating the long-term value of international cooperation.</p>`
+            },
+            {
+                year: "2008",
+                title: "Integrated City Development Concept (INSEK)",
+                category: "politics",
+                content: `<p>Comprehensive urban development plan approved, setting the course for Teltow's managed growth.</p>
+                <ul>
+                    <li>Defined: Altstadt (Old Town) revitalization</li>
+                    <li>Commercial zones in northwest</li>
+                    <li>Science/health corridor in northeast</li>
+                    <li>Marina project first included in planning documents</li>
+                </ul>`
+            },
+            {
+                year: "September 2009",
+                title: "Re-elected with Clear Majority",
+                category: "election",
+                content: `<p><strong>Date:</strong> September 27, 2009</p>
+                <p>Won re-election in the <strong>first round</strong> with <strong>53.15%</strong> of the vote.</p>
+                <p>This decisive victory validated his first-term performance and the success of the S-Bahn connection. Defeated CDU candidate Serena Meier-Zeh and others.</p>`
+            },
+            {
+                year: "2010-2011",
+                title: "Transportation Network Integration",
+                category: "infrastructure",
+                content: `<p><strong>December 2010:</strong> Improved bus network integration with S-Bahn through TKS (Teltow-Kleinmachnow-Stahnsdorf) regional transit coordination.</p>
+                <p><strong>July 2011:</strong> S-Bahn frequency increased to 10-minute intervals, further boosting connectivity and ridership.</p>`
+            },
+            {
+                year: "2014",
+                title: "Marina Teltow Groundbreaking",
+                category: "infrastructure",
+                content: `<p>Schmidt's flagship project begins: creating a city harbor on the Teltowkanal.</p>
+                <ul>
+                    <li><strong>First Spatenstich (Groundbreaking):</strong> 2014</li>
+                    <li>Vision: reconnect Teltow to its waterway heritage, create recreation space</li>
+                    <li>Initial budget: ~5 million euros</li>
+                </ul>`,
+                quote: { text: "Endlich ist die Stadt Teltow vom Wasser aus erlebbar.", translation: "Finally, Teltow can be experienced from the water." },
+                link: { url: "https://www.marina-teltow.de/", text: "Marina Teltow Official" }
+            },
+            {
+                year: "October 2015",
+                title: "750 Years of Teltow — City Celebration",
+                category: "achievement",
+                content: `<p><strong>October 2-4, 2015:</strong> Major city festival celebrating 750th anniversary, combined with 25 years of German Unity celebrations.</p>
+                <ul>
+                    <li>Three-day festival with concerts (Karat, Michelle, Pankow, Gil Ofarim, Thomas Godoj)</li>
+                    <li>Schmidt opened festivities with traditional Fassanstich (barrel tapping)</li>
+                    <li>Special birthday cake ceremony</li>
+                    <li>Travel Bugs geocaching celebration</li>
+                    <li>Aljona Voynova sand animation of Teltow's history</li>
+                </ul>
+                <p><strong>Population milestone:</strong> 25,000 residents</p>`
+            },
+            {
+                year: "May 2015",
+                title: "10 Years of S-Bahn — Zugtaufe",
+                category: "achievement",
+                content: `<p><strong>Date:</strong> May 23, 2015 (Pfingstsamstag)</p>
+                <ul>
+                    <li>S-Bahn train ceremonially named "Teltow" with Rübchenschnaps</li>
+                    <li>Brandenburg Infrastructure Minister Kathrin Schneider and S-Bahn CEO Peter Buchner participated</li>
+                    <li>10-meter Rübchen (turnip) sculpture unveiled at Ahlener Platz</li>
+                    <li>Passenger numbers had more than doubled since 2005</li>
+                </ul>`,
+                link: { url: "https://sbahn.berlin/das-unternehmen/presse/pressemitteilungen-pressearchiv/pressemitteilungen/erfolgreiche-bilanz-zehn-jahre-s-bahn-nach-teltow/", text: "S-Bahn Berlin 10-Year Anniversary" }
+            },
+            {
+                year: "2015",
+                title: "Germany's Fastest-Growing City",
+                category: "achievement",
+                content: `<p>Federal Institute for Building, Urban and Spatial Research study named Teltow <strong>Germany's fastest-growing medium-sized city</strong>.</p>
+                <ul>
+                    <li><strong>14.8% population growth</strong> — highest in Germany among medium-sized cities</li>
+                    <li>Techno Terrain Teltow: 200+ companies, 7,000+ employees</li>
+                    <li>Over 12 million euros in annual municipal revenue</li>
+                </ul>`,
+                quote: { text: "Man müsse schon aufpassen, dass die städtische Infrastruktur mit dem schnellen Einwohnerwachstum mithält.", translation: "We must ensure municipal infrastructure keeps pace with rapid population growth." },
+                link: { url: "https://mobil.berliner-kurier.de/berlin/brandenburg/am-schnellsten-wachsende-stadt-in-deutschland-das-wunder-von-teltow-22779980", text: "Berliner Kurier Article" }
+            },
+            {
+                year: "2017",
+                title: "Grace-Hopper-Gesamtschule Planning",
+                category: "education",
+                content: `<p>Schmidt worked with Landrat Wolfgang Blasig to plan a new comprehensive school — the county's largest investment project.</p>
+                <ul>
+                    <li>42 million euro project</li>
+                    <li>Negotiated location and interim solutions</li>
+                    <li>Mühlendorf-Oberschule designated as temporary location</li>
+                    <li>Named after computing pioneer Grace Hopper</li>
+                </ul>`
+            },
+            {
+                year: "October 2017",
+                title: "Re-elected for Third Term",
+                category: "election",
+                content: `<p><strong>First Round (September 24, 2017):</strong> 47.1% — did not achieve absolute majority</p>
+                <p><strong>Runoff (October 15, 2017):</strong> Defeated Andreas Wolf (Bürger für Bürger)</p>
+                <ul>
+                    <li><strong>Final Result:</strong> 60.8% to 39.2%</li>
+                    <li>16 years in office confirmed</li>
+                    <li>Key issues: Marina costs, infrastructure development</li>
+                </ul>`,
+                quote: { text: "Die soziale Infrastruktur muss mit unserer Bevölkerung mitwachsen.", translation: "Social infrastructure must grow with our population." },
+                link: { url: "https://www.tagesspiegel.de/potsdam/potsdam-mittelmark/thomas-schmidt-gewinnt-die-stichwahl-7121017.html", text: "Tagesspiegel Election Report" }
+            },
+            {
+                year: "September 2018",
+                title: "China Partnership — Rudong",
+                category: "international",
+                content: `<p><strong>Date:</strong> September 18, 2018</p>
+                <p>Fourth and newest partner city: <strong>Rudong County, Jiangsu Province, China</strong>.</p>
+                <ul>
+                    <li>Population: ~1 million (200 km north of Shanghai)</li>
+                    <li>Schmidt traveled to China to sign the partnership agreement</li>
+                    <li>Focus on economic and cultural exchange</li>
+                </ul>`
+            },
+            {
+                year: "May 2019",
+                title: "Marina Teltow Grand Opening",
+                category: "infrastructure",
+                content: `<p><strong>Date:</strong> May 12, 2019 (Sunday)</p>
+                <p>After 5 years of construction, thousands of visitors attended opening festivities.</p>
+                <ul>
+                    <li>39 boat moorings operational</li>
+                    <li>Brandenburg Infrastructure Minister Kathrin Schneider, Landrat Wolfgang Blasig in attendance</li>
+                    <li>Schmidt arrived by Feuerwehr boat (original historic barge broke down!)</li>
+                    <li><strong>Total project cost:</strong> ~15 million euros</li>
+                </ul>
+                <p><strong>Challenges overcome:</strong> Soil contamination from former concrete works, multiple legal disputes, budget increases from original 5 million.</p>`,
+                quote: { text: "Es liegt eine schwere Zeit hinter uns... Das Projekt Marina am blauen Band der Region wird einen absoluten touristischen Zugewinn für die Stadt Teltow bedeuten.", translation: "Difficult times are behind us... The Marina project will mean an absolute tourist gain for Teltow." },
+                link: { url: "https://www.tagesspiegel.de/potsdam/potsdam-mittelmark/teltows-hafen-ist-endlich-eroffnet-8520925.html", text: "Tagesspiegel Marina Opening" }
+            },
+            {
+                year: "February 2021",
+                title: "Schmidt Turns 60",
+                category: "personal",
+                content: `<p>Three fire departments made ceremonial visit to honor his 60th birthday and 20 years as mayor.</p>
+                <p><strong>Additional Role:</strong> Member of the Federal and State Board of ASB (Arbeiter-Samariter-Bund / Workers' Samaritan Federation).</p>`,
+                link: { url: "https://www.asb-lv-bbg.de/news/lieber-thomas-schmidt-alles-gute-zum-60-geburtstag", text: "ASB Birthday Greeting" }
+            },
+            {
+                year: "September 2022",
+                title: "SEE:LAB Innovation Center Opens",
+                category: "infrastructure",
+                content: `<p><strong>Date:</strong> September 29, 2022</p>
+                <p>SEE:LAB (Science, Engineering, Entrepreneurship Lab) opens in Teltow-Seehof.</p>
+                <ul>
+                    <li>2,000 m² of office and laboratory space</li>
+                    <li>Focus: biomaterials, biochemistry, medical technology, soft robotics</li>
+                    <li>Adjacent to Helmholtz-Zentrum Hereon (Institute for Active Polymers)</li>
+                    <li>Supported high-tech startup ecosystem</li>
+                </ul>`,
+                link: { url: "https://mehr-zukunft.info/investieren/technologie-und-gruenderzentren/", text: "SEE:LAB Information" }
+            },
+            {
+                year: "January 2023",
+                title: "Trilateral Partnership with Ukraine",
+                category: "international",
+                content: `<p><strong>Date:</strong> January 26, 2023 (signed at Żagań Castle)</p>
+                <p>Historic <strong>trilateral cities partnership</strong>: Teltow (Germany) - Żagań (Poland) - Khotyn (Ukraine) — the first such German-Polish-Ukrainian partnership.</p>
+                <ul>
+                    <li>German Chancellor Olaf Scholz sent video greeting</li>
+                    <li>Khotyn: 20,000 inhabitants, hosting 8,000 internal refugees</li>
+                    <li>Located 80 km from Moldova/Romania border</li>
+                </ul>`,
+                link: { url: "https://www.teltow.de/teltow/die-stadt/staedtepartnerschaften.html", text: "Partnership Information" }
+            },
+            {
+                year: "February 2023",
+                title: "Bus Donation to Khotyn, Ukraine",
+                category: "international",
+                content: `<p><strong>Date:</strong> February 3, 2023</p>
+                <p>Mercedes-Benz bus donated to Ukrainian partner city for school transportation.</p>
+                <ul>
+                    <li>Used Regiobus vehicle</li>
+                    <li>30,000 euros in federal funding ("Engagement Global")</li>
+                    <li>Khotyn Mayor Andriy Dranchuk personally collected the bus</li>
+                    <li>Previously: generator and heating equipment donated</li>
+                </ul>`,
+                quote: { text: "Das war wirklich nicht einfach, aber am Ende zählt, dass wir unserer Partnerstadt schnell und konkret helfen konnten.", translation: "It wasn't easy, but what counts is that we could help our partner city quickly and concretely." },
+                link: { url: "https://www.regiobus-pm.de/news/artikel/linienbus-geht-an-die-ukrainische-stadt-khotyn/", text: "Bus Donation Report" }
+            },
+            {
+                year: "March 2023",
+                title: "Brandenburg zeigt Haltung",
+                category: "politics",
+                content: `<p>Teltow joined state initiative <strong>"Brandenburg Shows Stance"</strong> (against extremism).</p>
+                <p>Schmidt introduced the motion on March 20, 2023, which was approved by the Stadtverordnetenversammlung (City Council).</p>`
+            },
+            {
+                year: "October 2023",
+                title: "Grace-Hopper-Gesamtschule Opens",
+                category: "education",
+                content: `<p><strong>Date:</strong> October 6, 2023</p>
+                <p>The county's largest investment project finally opens its doors.</p>
+                <ul>
+                    <li><strong>Cost:</strong> 42 million euros</li>
+                    <li>12,000 m² of modern educational facilities</li>
+                    <li>Star-shaped building design</li>
+                    <li>Delegation from Khotyn, Ukraine attended opening</li>
+                    <li>Schmidt participated in ribbon-cutting with Landrat Marko Köhler</li>
+                </ul>`,
+                link: { url: "https://www.stadtblatt-online.de/bildung/eroeffnung-der-grace-hopper-gesamtschule-in-teltow/", text: "School Opening Report" }
+            },
+            {
+                year: "2024",
+                title: "Civic Engagement & Youth Initiatives",
+                category: "politics",
+                content: `<p><strong>January 22, 2024:</strong> "Frag doch mal den Bürgermeister" (Ask the Mayor) event with 40 children and youth at Jugendhaus Schiffer.</p>
+                <p>Discussed: ice rink, free student tickets, anime convention, school renovations.</p>
+                <p>Teltow was <strong>selected for Hertie Foundation's "Jugend entscheidet" program</strong> (1 of 10 cities from 100 applicants).</p>
+                <p><strong>Bürgerhaushalt 2024 Projects:</strong></p>
+                <ul>
+                    <li>Calisthenics training park in Teltower Park (opened September 3, 2024)</li>
+                    <li>Playground "Seegurke" ship baptized (April 13, 2024)</li>
+                </ul>`
+            },
+            {
+                year: "September 2024",
+                title: "Ernst-von-Stubenrauch School Expansion",
+                category: "education",
+                content: `<p><strong>Date:</strong> September 2, 2024</p>
+                <p>New school building branch opened (former Bruno-H.-Bürgel-Schule) at Potsdamer Straße 51 location.</p>
+                <ul>
+                    <li>152 students in 8 classes (4 fifth grade, 4 sixth grade)</li>
+                    <li>State-of-the-art technical equipment</li>
+                </ul>`
+            },
+            {
+                year: "February 2025",
+                title: "Climate Cooperation Agreement",
+                category: "infrastructure",
+                content: `<p><strong>Date:</strong> February 11, 2025</p>
+                <p>Schmidt signed interkommunale Wärmeplanung (joint municipal heating plan) cooperation agreement with mayors of Kleinmachnow (Michael Grubert) and Stahnsdorf (Bernd Albers).</p>
+                <p>Focus on sustainable energy transition for the TKS region.</p>`
+            },
+            {
+                year: "May 2025",
+                title: "Continued Ukraine Support",
+                category: "international",
+                content: `<p><strong>Date:</strong> May 13, 2025</p>
+                <p>Schmidt personally handed over equipment to Mayor Andriy Dranchuk:</p>
+                <ul>
+                    <li>Doppelkabine (cab) as tow vehicle</li>
+                    <li>Transport trailer</li>
+                    <li>Scissor lift (9-meter working height)</li>
+                    <li>Battery-powered tools</li>
+                </ul>
+                <p><strong>Total value:</strong> approximately 55,000 euros</p>`
+            },
+            {
+                year: "September 2025",
+                title: "Kita Käferland Opens",
+                category: "education",
+                content: `<p><strong>Date:</strong> September 12, 2025</p>
+                <p>New integration kindergarten in Anne-Frank-Weg — one of Schmidt's final major projects.</p>
+                <ul>
+                    <li>Replaced old facility closed 2019 due to contamination</li>
+                    <li>96 places (30 more than predecessor)</li>
+                    <li>1,412 m² modern low-energy building</li>
+                    <li>Photovoltaic, ground collectors, green roof</li>
+                    <li><strong>Cost:</strong> 8 million euros</li>
+                </ul>`,
+                quote: { text: "Es ist gut angelegtes Geld. Wir haben einen modernen Ort für die kommenden Generationen geschaffen.", translation: "It's money well invested. We've created a modern place for future generations." }
+            },
+            {
+                year: "September 2025",
+                title: "Final Bürgerhaushalt Announcement",
+                category: "politics",
+                content: `<p><strong>Date:</strong> September 12, 2025</p>
+                <p>Schmidt presented winning participatory budgeting projects at "Irischer Abend" event.</p>
+                <ul>
+                    <li>1,427 residents participated, 3,978 votes cast</li>
+                    <li>Top projects: Defibrillator for Ruhlsdorf sports field, tree planting for heat protection, mountain bike trail</li>
+                </ul>`
+            },
+            {
+                year: "September 2025",
+                title: "End of an Era — Retirement Announced",
+                category: "election",
+                content: `<p>After 24 years and 3 terms, Thomas Schmidt announced he would not seek re-election.</p>
+                <ul>
+                    <li><strong>Election date:</strong> September 28, 2025</li>
+                    <li>Two candidates to succeed: André Freymuth (CDU), Claudia Eller-Funke (SPD)</li>
+                    <li>Schmidt's legacy: transforming a 16,000-person town into a thriving 29,000-resident city</li>
+                </ul>
+                <p>SPD candidate Claudia Eller-Funke promised to continue Schmidt's "successful path."</p>`,
+                link: { url: "https://www.tagesspiegel.de/potsdam/brandenburg/neuer-burgermeister-nach-24-jahren-spd-und-cdu-kampfen-um-teltow--ohne-die-afd-14367197.html", text: "Tagesspiegel Farewell Article" }
+            },
+            {
+                year: "January 2026",
+                title: "Succession — End of Term",
+                category: "politics",
+                content: `<p><strong>Date:</strong> January 23, 2026</p>
+                <p>André Freymuth (CDU) was elected as successor in the September 2025 election.</p>
+                <p>Schmidt officially hands over office after 24 years of service, leaving behind a transformed city with:</p>
+                <ul>
+                    <li>Nearly doubled population</li>
+                    <li>World-class transit connections</li>
+                    <li>Five international partner cities</li>
+                    <li>Modern educational infrastructure</li>
+                    <li>Thriving economic development</li>
+                </ul>`
+            }
+        ];
+
+        // State
+        let loadedCount = 0;
+        const batchSize = 5;
+        const timeline = document.getElementById('timeline');
+        const loading = document.getElementById('loading');
+        const scrollProgress = document.getElementById('scrollProgress');
+        const backToTop = document.getElementById('backToTop');
+
+        // Create timeline entry HTML
+        function createTimelineEntry(item) {
+            const entry = document.createElement('div');
+            entry.className = `timeline-entry category-${item.category}`;
+
+            let content = `
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-year">${item.year}</span>
+                    <h3 class="timeline-title">${item.title}</h3>
+                    <div class="timeline-content">
+                        ${item.content}
+            `;
+
+            if (item.quote) {
+                content += `
+                    <blockquote class="timeline-quote">
+                        "${item.quote.text}"
+                        <cite>— Thomas Schmidt${item.quote.translation ? ` (Translation: "${item.quote.translation}")` : ''}</cite>
+                    </blockquote>
+                `;
+            }
+
+            if (item.link) {
+                content += `
+                    <a href="${item.link.url}" target="_blank" rel="noopener" class="timeline-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                        ${item.link.text}
+                    </a>
+                `;
+            }
+
+            content += `
+                    </div>
+                </div>
+            `;
+
+            entry.innerHTML = content;
+            return entry;
+        }
+
+        // Load more entries
+        function loadMoreEntries() {
+            if (loadedCount >= timelineData.length) {
+                loading.classList.remove('active');
+                return;
+            }
+
+            loading.classList.add('active');
+
+            // Simulate loading delay for effect
+            setTimeout(() => {
+                const endIndex = Math.min(loadedCount + batchSize, timelineData.length);
+
+                for (let i = loadedCount; i < endIndex; i++) {
+                    const entry = createTimelineEntry(timelineData[i]);
+                    timeline.appendChild(entry);
+
+                    // Trigger animation after a small delay
+                    setTimeout(() => {
+                        entry.classList.add('visible');
+                    }, (i - loadedCount) * 100);
+                }
+
+                loadedCount = endIndex;
+                loading.classList.remove('active');
+
+                // Check if we need to load more immediately (viewport not filled)
+                if (loadedCount < timelineData.length) {
+                    checkScroll();
+                }
+            }, 300);
+        }
+
+        // Check if we need to load more
+        function checkScroll() {
+            const scrollTop = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+
+            // Load more when user scrolls to 80% of the page
+            if (scrollTop + windowHeight >= documentHeight * 0.8) {
+                loadMoreEntries();
+            }
+        }
+
+        // Update scroll progress bar
+        function updateScrollProgress() {
+            const scrollTop = window.scrollY;
+            const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / documentHeight) * 100;
+            scrollProgress.style.width = `${progress}%`;
+
+            // Show/hide back to top button
+            if (scrollTop > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+
+        // Intersection Observer for animations
+        function setupIntersectionObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Observe all timeline entries
+            document.querySelectorAll('.timeline-entry').forEach(entry => {
+                observer.observe(entry);
+            });
+
+            return observer;
+        }
+
+        // Back to top functionality
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            checkScroll();
+            updateScrollProgress();
+        });
+
+        // Initial load
+        loadMoreEntries();
+
+        // Setup observer after initial load
+        setTimeout(setupIntersectionObserver, 500);
+    </script>
+</body>
+</html>
