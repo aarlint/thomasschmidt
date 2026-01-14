@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { TimelineEntry } from '../../types/timeline';
 import { categoryColors } from '../../utils/categoryColors';
 import { useLanguage } from '../../context/LanguageContext';
@@ -12,8 +13,14 @@ export const TimelineCard: React.FC<TimelineCardProps> = ({ entry, onClick, isEv
   const { t } = useLanguage();
   const colors = categoryColors[entry.category];
   const categoryLabel = t(`category.${entry.category}` as keyof typeof t);
+  const [isPortrait, setIsPortrait] = useState(false);
 
   const truncatedContent = entry.content.replace(/<[^>]*>/g, '').slice(0, 150) + '...';
+
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget;
+    setIsPortrait(img.naturalHeight > img.naturalWidth);
+  };
 
   return (
     <div
@@ -34,13 +41,14 @@ export const TimelineCard: React.FC<TimelineCardProps> = ({ entry, onClick, isEv
         >
           {/* Image */}
           {entry.image && (
-            <div className="aspect-video overflow-hidden">
+            <div className={`overflow-hidden ${isPortrait ? 'aspect-[3/4]' : 'aspect-video'}`}>
               <img
                 src={entry.image}
                 alt={entry.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 style={{ objectPosition: entry.imagePosition || 'center center' }}
                 loading="lazy"
+                onLoad={handleImageLoad}
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                 }}
@@ -91,8 +99,14 @@ export const TimelineCardMobile: React.FC<Omit<TimelineCardProps, 'isEven'>> = (
   const { t } = useLanguage();
   const colors = categoryColors[entry.category];
   const categoryLabel = t(`category.${entry.category}` as keyof typeof t);
+  const [isPortrait, setIsPortrait] = useState(false);
 
   const truncatedContent = entry.content.replace(/<[^>]*>/g, '').slice(0, 100) + '...';
+
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget;
+    setIsPortrait(img.naturalHeight > img.naturalWidth);
+  };
 
   return (
     <div className="relative pl-8">
@@ -107,13 +121,14 @@ export const TimelineCardMobile: React.FC<Omit<TimelineCardProps, 'isEven'>> = (
         className="card w-full text-left p-0 overflow-hidden cursor-pointer group"
       >
         {entry.image && (
-          <div className="aspect-video overflow-hidden">
+          <div className={`overflow-hidden ${isPortrait ? 'aspect-[3/4]' : 'aspect-video'}`}>
             <img
               src={entry.image}
               alt={entry.title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               style={{ objectPosition: entry.imagePosition || 'center center' }}
               loading="lazy"
+              onLoad={handleImageLoad}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
               }}

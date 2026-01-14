@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { TimelineEntry } from '../../types/timeline';
 import { categoryColors } from '../../utils/categoryColors';
 import { useLanguage } from '../../context/LanguageContext';
@@ -12,6 +13,7 @@ interface TimelineModalProps {
 
 export const TimelineModal: React.FC<TimelineModalProps> = ({ entry, isOpen, onClose }) => {
   const { t } = useLanguage();
+  const [isPortrait, setIsPortrait] = useState(false);
 
   if (!entry) return null;
 
@@ -19,16 +21,22 @@ export const TimelineModal: React.FC<TimelineModalProps> = ({ entry, isOpen, onC
   const categoryLabel = t(`category.${entry.category}` as keyof typeof t);
   const sanitizedContent = DOMPurify.sanitize(entry.content);
 
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget;
+    setIsPortrait(img.naturalHeight > img.naturalWidth);
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       {/* Header Image */}
       {entry.image && (
-        <div className="aspect-video w-full overflow-hidden">
+        <div className={`relative w-full overflow-hidden ${isPortrait ? 'max-h-96' : 'aspect-video'}`}>
           <img
             src={entry.image}
             alt={entry.title}
-            className="w-full h-full object-cover"
+            className={`w-full object-cover ${isPortrait ? 'h-96 object-top' : 'h-full'}`}
             style={{ objectPosition: entry.imagePosition || 'center center' }}
+            onLoad={handleImageLoad}
             onError={(e) => {
               e.currentTarget.parentElement!.style.display = 'none';
             }}
