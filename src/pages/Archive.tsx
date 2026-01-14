@@ -1,3 +1,4 @@
+import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 interface ArchiveItem {
@@ -24,7 +25,7 @@ const archiveItems: ArchiveItem[] = [
   },
 ];
 
-const typeIcons: Record<string, JSX.Element> = {
+const typeIcons: Record<string, React.ReactNode> = {
   pdf: (
     <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2l5 5h-5V4zm-3 9.5c0 .83-.67 1.5-1.5 1.5H7v2H5.5v-6H8.5c.83 0 1.5.67 1.5 1.5v1zm5 3c0 .83-.67 1.5-1.5 1.5H11v-6h2.5c.83 0 1.5.67 1.5 1.5v3zm4-3c0 .83-.67 1.5-1.5 1.5H17v1h1.5V17H17v1.5h-1.5v-6H19c.83 0 1.5.67 1.5 1.5v1z"/>

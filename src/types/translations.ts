@@ -4,7 +4,12 @@ export interface TranslationKeys {
   // Navigation
   'nav.home': string;
   'nav.timeline': string;
+  'nav.archive': string;
   'nav.about': string;
+
+  // Archive
+  'archive.title': string;
+  'archive.subtitle': string;
 
   // Hero
   'hero.title': string;
