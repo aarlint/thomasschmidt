@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #1e40af;
+  --color-primary-700: #1e3a8a;
+  --color-primary-800: #1e3047;
+  --color-primary-900: #0f172a;
+
+  --color-accent-50: #fffbeb;
+  --color-accent-100: #fef3c7;
+  --color-accent-200: #fde68a;
+  --color-accent-300: #fcd34d;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #d4a017;
+  --color-accent-600: #b8860b;
+  --color-accent-700: #92400e;
+  --color-accent-800: #78350f;
+  --color-accent-900: #451a03;
+
+  --font-family-headline: 'Playfair Display', Georgia, serif;
+  --font-family-body: 'Inter', system-ui, sans-serif;
+
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-card-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-modal: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-slate-900 antialiased;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.container-page {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center px-6 py-3
+         bg-primary-600 text-white font-medium rounded-lg
+         hover:bg-primary-700 focus:outline-none focus:ring-2
+         focus:ring-primary-500 focus:ring-offset-2
+         transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-6 py-3
+         bg-white text-primary-600 font-medium rounded-lg
+         border-2 border-primary-600
+         hover:bg-primary-50 focus:outline-none focus:ring-2
+         focus:ring-primary-500 focus:ring-offset-2
+         transition-colors duration-200;
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-card
+         border border-slate-100
+         transition-shadow duration-300
+         hover:shadow-card-hover;
+}
+
+.category-badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wide;
+}
+
+.category-personal { @apply bg-orange-100 text-orange-700; }
+.category-politics { @apply bg-slate-100 text-slate-700; }
+.category-election { @apply bg-red-100 text-red-700; }
+.category-infrastructure { @apply bg-green-100 text-green-700; }
+.category-international { @apply bg-purple-100 text-purple-700; }
+.category-education { @apply bg-blue-100 text-blue-700; }
+.category-achievement { @apply bg-amber-100 text-amber-700; }
+
+.text-balance {
+  text-wrap: balance;
+}
